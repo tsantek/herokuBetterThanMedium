@@ -126,7 +126,7 @@ app.post('/profile', urlencodedParser, (req, res) => {
     data.lastName = req.body.lastName
     data.bio = req.body.bio
 
-    console.log(data)
+    console.log(req.body)
     fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
         if (err) throw err;
         console.log('Data written to file');
@@ -138,6 +138,31 @@ app.post('/profile', urlencodedParser, (req, res) => {
 app.use(function(req, res, next) {
     res.status(404).send("Sorry can't find that!")
 })
+
+
+function startKeepAlive() {
+    setInterval(function() {
+        var options = {
+            host: 'https://heroku-blog-better-than-medium.herokuapp.com/',
+            port: 80,
+            path: '/'
+        };
+        http.get(options, function(res) {
+            res.on('data', function(chunk) {
+                try {
+                    // optional logging... disable after it's working
+                    console.log("HEROKU RESPONSE: " + chunk);
+                } catch (err) {
+                    console.log(err.message);
+                }
+            });
+        }).on('error', function(err) {
+            console.log("Error: " + err.message);
+        });
+    }, 12 * 3600 * 1000);
+}
+
+startKeepAlive();
 
 // APP listening server on port 5000
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
