@@ -1,0 +1,28 @@
+{
+    "name": "node-heroku-blog",
+    "version": "0.3.0",
+    "description": "Heroku APP Blog",
+    "engines": {
+        "node": "10.x"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "node test.js"
+    },
+    "dependencies": {
+        "ejs": "^2.5.6",
+        "express": "^4.15.2",
+        "nodeman": "^1.1.2"
+    },
+    "devDependencies": {
+        "request": "^2.81.0",
+        "tape": "^4.7.0"
+    },
+    "keywords": [
+        "node",
+        "heroku",
+        "express"
+    ],
+    "license": "MIT"
+}
