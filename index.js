@@ -15,8 +15,7 @@ app.set('view engine', 'ejs')
 // ROUTES
 app.get('/', (req, res) => {
     let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
-    console.log(data)
-    res.render('pages/index')
+    res.render('pages/index', { data: data })
 })
 
 

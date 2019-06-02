@@ -10,9 +10,56 @@
     <% include ../partials/nav.ejs %>
         <div class="container main-container">
 
-            THIS IS A INDEX
+            <div class="row info-home">
+                <div class="col-md-5 offset-md-1">
+                    <div class="name-bio">
+                        <h4>
+                            <%=data.firstName%>
+                                <%=data.lastName%>
+                        </h4>
+                        <p>
+                            <%=data.bio%>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="img-div"></div>
+                </div>
 
-        </div>
+            </div>
+
+
+            <div class="row">
+                <!-- Blog Entries Column -->
+                <div class="col-md-10 offset-md-1">
+                    <% for(let i=0; i < data.blogs.length; i++){ %>
+                        <!-- Blog Post -->
+                        <div class="card mb-4">
+                            <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
+                            <div class="card-body">
+                                <h2 class="card-title">
+                                    <%= data.blogs[i].title %>
+                                </h2>
+                                <p class="card-text">
+                                    <%- data.blogs[i].intro %>
+                                </p>
+                                <a href="/blogs/<%= data.blogs[i].id%>" class="link-index-read-more">Read More...</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Posted on
+                                <%= data.blogs[i].time %>
+                            </div>
+
+                            <div class="delete">
+                                <a class="btn btn-danger button-delete" href="/delete/<%= data.blogs[i].id%>">DELETE</a>
+                                <a class="btn btn-success button-delete" href="/edit/<%= data.blogs[i].id%>">EDIT</a>
+                            </div>
+                        </div>
+                        <%  } %>
+                </div>
+
+
+            </div>
 
         </div>
         <!-- /.container -->
@@ -24,6 +71,8 @@
             </div>
             <!-- /.container -->
         </footer>
+
+
 
 
         <!-- Optional JavaScript -->
