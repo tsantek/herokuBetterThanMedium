@@ -155,7 +155,7 @@ function startKeepAlive() {
         }).on('error', function(err) {
             console.log("Error: " + err.message);
         });
-    }, 60000000);
+    }, 600000);
 }
 startKeepAlive();
 
