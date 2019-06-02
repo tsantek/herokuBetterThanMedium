@@ -12,8 +12,12 @@ app.set('views', path.join(__dirname, 'views'))
     // call ejs on views
 app.set('view engine', 'ejs')
 
-
-app.get('/', (req, res) => res.render('pages/index'))
+// ROUTES
+app.get('/', (req, res) => {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
+    console.log(data)
+    res.render('pages/index')
+})
 
 
 // APP listening server on port 5000
