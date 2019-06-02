@@ -34,12 +34,15 @@ app.post('/newpost', urlencodedParser, (req, res) => {
     } else {
         postId = data.blogs[data.blogs.length - 1].id + 1
     }
+    var today = new Date();
+    var date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
+    console.log(date)
     let newPost = {
         id: postId,
         title: req.body.title,
         body: req.body.body,
         intro: req.body.intro,
-        time: new Date
+        time: date
     }
     data.blogs.push(newPost);
     fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
@@ -125,8 +128,6 @@ app.post('/profile', urlencodedParser, (req, res) => {
     data.firstName = req.body.firstName
     data.lastName = req.body.lastName
     data.bio = req.body.bio
-
-    console.log(req.body)
     fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
         if (err) throw err;
         console.log('Data written to file');
@@ -139,15 +140,10 @@ app.use(function(req, res, next) {
     res.status(404).send("Sorry can't find that!")
 })
 
-
+// function for pinging server
 function startKeepAlive() {
     setInterval(function() {
-        var options = {
-            host: 'https://heroku-blog-better-than-medium.herokuapp.com/',
-            port: 80,
-            path: '/'
-        };
-        http.get(options, function(res) {
+        http.get('https://heroku-blog-better-than-medium.herokuapp.com', function(res) {
             res.on('data', function(chunk) {
                 try {
                     // optional logging... disable after it's working
@@ -159,10 +155,35 @@ function startKeepAlive() {
         }).on('error', function(err) {
             console.log("Error: " + err.message);
         });
-    }, 12 * 3600 * 1000);
+    }, 60000000);
 }
-
 startKeepAlive();
+
+
+// get back data for json...
+function getDataBack() {
+    data = {
+        firstName: 'Tom',
+        lastName: 'Santek',
+        nickName: 'Tom',
+        email: 'Tom',
+        bio: 'Let me tell you something you already know....',
+        blogs: [{
+            id: '5',
+            title: 'What is Lorem Ipsum?',
+            body: '<p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</strong></p>\r\n<p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>\r\n<p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>',
+            intro: '<p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the</strong></p>\r\n<p>1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets</p>\r\n<p>containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>',
+            time: '2019-05-31T23:44:17.454Z'
+        }]
+    }
+    fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    });
+}
+setTimeout(getDataBack, 30000000);
+
+
 
 // APP listening server on port 5000
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
