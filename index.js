@@ -43,7 +43,7 @@ app.post('/newpost', urlencodedParser, (req, res) => {
         time: new Date
     }
     data.blogs.push(newPost);
-    fs.writeFile(__dirname + '/user.json', JSON.stringify(data), (err) => {
+    fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
         if (err) throw err;
         console.log('Data written to file');
     });
