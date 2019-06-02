@@ -18,31 +18,31 @@
             <div class="row">
                 <p>Editing Profile....</p>
                 <!-- Blog Entries Column -->
-                <div class="col-md-12"></div>
-                <form action="personal %>" method="post">
-                    <div class="form-group">
-                        <label for="firstName">First Name: </label>
-                        <input class="form-control" required id="firstName" type="text" name="title" value="<%= data.firstName %>">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>: </label>
-                        <input class="form-control" required id="lastName" type="text" name="title" value="<%= data.lastName %>">
-                    </div>
-                    <div class="form-group">
-                        <label for="bio">Small Bio</label>
-                        <input class="form-control" required id="bio" type="text" name="title" value="<%= data.bio %>">
-                    </div>
-                    <form>
+                <div class="col-md-12">
+                    <form action="personal %>" method="post">
                         <div class="form-group">
-                            <label for="img">Upload Image</label>
-                            <input type="file" class="form-control-file" id="img">
+                            <label for="firstName">First Name: </label>
+                            <input class="form-control" required id="firstName" type="text" name="title" value="<%= data.firstName %>">
                         </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>: </label>
+                            <input class="form-control" required id="lastName" type="text" name="title" value="<%= data.lastName %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Small Bio</label>
+                            <input class="form-control" required id="bio" type="text" name="title" value="<%= data.bio %>">
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <label for="img">Upload Image</label>
+                                <input type="file" class="form-control-file" id="img">
+                            </div>
+                        </form>
+                        <a href="/" class="btn btn-danger">Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Submit">
                     </form>
-                    <a href="/" class="btn btn-danger">Cancel</a>
-                    <input type="submit" class="btn btn-success" value="Submit">
-                </form>
+                </div>
             </div>
-        </div>
         </div>
         <!-- /.container -->
         <!-- Optional JavaScript -->
