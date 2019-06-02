@@ -112,6 +112,14 @@ app.post('/edit/:id', urlencodedParser, (req, res) => {
 })
 
 
+// GET PROFILE
+app.get('/profile', (req, res) => {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
+    res.render('pages/profile', { data: data })
+})
+
+
+
 // 404
 app.use(function(req, res, next) {
     res.status(404).send("Sorry can't find that!")
