@@ -118,7 +118,21 @@ app.get('/profile', (req, res) => {
     res.render('pages/profile', { data: data })
 })
 
+//  POST EDIT PROFILE
+app.post('/profile', urlencodedParser, (req, res) => {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
+    console.log(data)
+    data.firstName = req.body.firstName
+    data.lastName = req.body.lastName
+    data.bio = req.body.bio
 
+    console.log(data)
+    fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    });
+    res.redirect('/')
+})
 
 // 404
 app.use(function(req, res, next) {
