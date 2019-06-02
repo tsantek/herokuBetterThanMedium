@@ -64,6 +64,60 @@ app.get('/blogs/:id', (req, res) => {
     res.render('pages/blog', { data: data, blog: blog })
 })
 
+// delete
+app.get('/delete/:id', function(req, res) {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
+    let postId = req.params.id;
+    let blogdata = data.blogs.filter(blog => blog.id != postId)
+    data.blogs = blogdata
+    fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    });
+    res.redirect('/')
+})
+
+// GET EDIT
+app.get('/edit/:id', (req, res) => {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
+    let postId = req.params.id;
+    let blog;
+    for (let i = 0; i < data.blogs.length; i++) {
+        if (data.blogs[i].id == postId) {
+            blog = (data.blogs[i])
+        }
+    }
+    res.render('pages/edit', { data: data, blog: blog })
+})
+
+//  POST EDIT BLOG
+app.post('/edit/:id', urlencodedParser, (req, res) => {
+    let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
+    let postId = req.params.id
+    let newPost = {
+        id: postId,
+        title: req.body.title,
+        body: req.body.body,
+        intro: req.body.intro,
+        time: new Date
+    }
+    for (let i = 0; i < data.blogs.length; i++) {
+        if (data.blogs[i].id == postId) {
+            data.blogs[i] = newPost
+        }
+    }
+    fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    });
+    res.redirect('/')
+})
+
+
+// 404
+app.use(function(req, res, next) {
+    res.status(404).send("Sorry can't find that!")
+})
 
 // APP listening server on port 5000
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
