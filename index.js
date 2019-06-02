@@ -26,7 +26,6 @@ app.get('/newpost', (req, res) => {
 })
 
 // post new post
-
 app.post('/newpost', urlencodedParser, (req, res) => {
     let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
     let postId;
@@ -51,7 +50,6 @@ app.post('/newpost', urlencodedParser, (req, res) => {
 })
 
 // blogs 
-
 app.get('/blogs/:id', (req, res) => {
     let data = JSON.parse(fs.readFileSync(__dirname + '/app.json', 'utf8'))
     let postId = req.params.id;
