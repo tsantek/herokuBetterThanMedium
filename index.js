@@ -181,7 +181,7 @@ function getDataBack() {
         console.log('Data written to file');
     });
 }
-setTimeout(getDataBack, 30000000);
+setTimeout(getDataBack, 600000);
 
 
 
