@@ -19,37 +19,60 @@
             selector: 'textarea'
         });
     </script>
-    <% include ../partials/nav.ejs %>
-        <div class="container main-container">
-            <div class="row">
-                <p>Editing....</p>
-                <!-- Blog Entries Column -->
-                <div class="col-md-12">
-                    <form action="/edit/<%= blog.id %>" method="post">
-                        <div class="form-group">
-                            <label for="title">Enter Title: </label>
-                            <input class="form-control" required id="title" type="text" name="title" value="<%= blog.title %>">
-                        </div>
-                        <div class="form-group">
-                            <label for="body">Enter Body: </label>
-                            <textarea class="form-control" id="body" required rows="20" type="text" name="body"><%= blog.body %></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="intro">Intro for Home Page</label>
-                            <textarea class="form-control" id="intro" name="intro" rows="2"><%= blog.intro %></textarea>
-                        </div>
-                        <a href="/" class="btn btn-danger">Cancel</a>
-                        <input type="submit" class="btn btn-success" value="Submit">
-                    </form>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Better than Medium</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href=".././newpost">ADD NEW POST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href=".././profile">PROFILE</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- /.container -->
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </nav>
+    <div class="container main-container">
+        <div class="row">
+            <p>Editing....</p>
+            <!-- Blog Entries Column -->
+            <div class="col-md-12">
+                <form action="/edit/<%= blog.id %>" method="post">
+                    <div class="form-group">
+                        <label for="title">Enter Title: </label>
+                        <input class="form-control" required id="title" type="text" name="title" value="<%= blog.title %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Enter Body: </label>
+                        <textarea class="form-control" id="body" required rows="20" type="text" name="body"><%= blog.body %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="intro">Intro for Home Page</label>
+                        <textarea class="form-control" id="intro" name="intro" rows="2"><%= blog.intro %></textarea>
+                    </div>
+                    <a href="/" class="btn btn-danger">Cancel</a>
+                    <input type="submit" class="btn btn-success" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
