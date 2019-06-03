@@ -9,6 +9,7 @@ Install:
 git clone https://github.com/tsantek/herokuBetterThanMedium
 cd herokuBetterThenMedium
 npm install
+nodeman index.js
 ```
 
 
