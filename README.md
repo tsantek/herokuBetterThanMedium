@@ -5,9 +5,11 @@ Demo: https://heroku-blog-better-than-medium.herokuapp.com/
 
 Install: 
 
-```git clone https://github.com/tsantek/herokuBetterThanMedium
+```
+git clone https://github.com/tsantek/herokuBetterThanMedium
 cd herokuBetterThenMedium
-npm install```
+npm install
+```
 
 
 
