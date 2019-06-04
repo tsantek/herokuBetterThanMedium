@@ -27,3 +27,5 @@ On home page user follower can see all his posts from last one to first one.
 ![img1](/imgSS/img2.png)
 ![img1](/imgSS/img3.png)
 ![img1](/imgSS/img5.png)
+![img1](/imgSS/img6.png)
+
