@@ -140,24 +140,8 @@ app.use(function(req, res, next) {
     res.status(404).send("Sorry can't find that!")
 })
 
-// function for pinging server
-function startKeepAlive() {
-    setInterval(function() {
-        http.get('https://heroku-blog-better-than-medium.herokuapp.com', function(res) {
-            res.on('data', function(chunk) {
-                try {
-                    // optional logging... disable after it's working
-                    console.log("HEROKU RESPONSE: " + chunk);
-                } catch (err) {
-                    console.log(err.message);
-                }
-            });
-        }).on('error', function(err) {
-            console.log("Error: " + err.message);
-        });
-    }, 6000);
-}
-// startKeepAlive();
+
+
 
 
 // get back data for json...
@@ -169,7 +153,7 @@ function getDataBack() {
         console.log('Data written to file');
     });
 }
-setInterval(getDataBack, 2000);
+setInterval(getDataBack, 60000);
 
 
 
