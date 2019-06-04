@@ -39,3 +39,31 @@
 .tox-notifications-container {
     display: none;
 }
+
+.dropdown {
+    margin-top: 8px;
+}
+
+.dropdown a {
+    color: rgba(255, 255, 255, .5);
+}
+
+.dropdown-menu {
+    left: -85px;
+    min-width: 13rem;
+}
+
+.login-form {
+    padding: 20px;
+}
+
+
+/*  LOGED */
+
+.logedIn {
+    display: none;
+}
+
+.delete {
+    display: none;
+}
