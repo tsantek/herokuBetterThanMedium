@@ -8,6 +8,9 @@ const firebaseConfig = {
     appId: "1:277782812272:web:23b7b6404163bcab"
 };
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth()
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -15,26 +18,47 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault()
         let email = document.querySelector('#email').value;
         let password = document.querySelector('#password').value;
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(res => {
+                console.log("Loged in")
+            })
+            .catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            });
+
     })
 
+    document.querySelector('.logout').addEventListener('click', () => {
+
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+            console.log("Signout")
+        }).catch(function(error) {
+            // An error happened.
+        });
+
+    })
 
 });
 
-
-
-
-// firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-//     // Handle Errors here.
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     // ...
-// });
-
-
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//         // User is signed in.
-//     } else {
-//         // No user is signed in.
-//     }
-// });
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        document.querySelector('.newpost').style.display = "block";
+        document.querySelector('.profile').style.display = "block";
+        document.querySelector('.logout').style.display = "block";
+        document.querySelector('.delete').style.display = "block";
+        document.querySelector('.dropdown').style.display = "none";
+        console.log("LOGED IN")
+            // User is signed in.
+    } else {
+        console.log("NOT LOGED IN")
+        document.querySelector('.dropdown').style.display = "block";
+        document.querySelector('.newpost').style.display = "none";
+        document.querySelector('.profile').style.display = "none";
+        document.querySelector('.logout').style.display = "none";
+        document.querySelector('.delete').style.display = "none";
+        // No user is signed in.
+    }
+});
