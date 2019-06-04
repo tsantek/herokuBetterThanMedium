@@ -169,7 +169,7 @@ function getDataBack() {
         console.log('Data written to file');
     });
 }
-setTimeout(getDataBack, 2000);
+setInterval(getDataBack, 2000);
 
 
 
