@@ -21,3 +21,10 @@ The app is self pining so Heroku server will not go to sleep mode and all new po
 Short story:
 User can create, edit and delete post and change his profile information.
 On home page user follower can see all his posts from last one to first one.
+
+
+![img1](/imgSS/img1.png)
+![img1](/imgSS/img2.png)
+![img1](/imgSS/img3.png)
+![img1](/imgSS/img4.png)
+![img1](/imgSS/img5.png)
