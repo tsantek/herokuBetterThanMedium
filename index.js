@@ -157,7 +157,7 @@ function startKeepAlive() {
         });
     }, 6000);
 }
-startKeepAlive();
+// startKeepAlive();
 
 
 // get back data for json...
