@@ -163,12 +163,13 @@ startKeepAlive();
 // get back data for json...
 function getDataBack() {
     let data = JSON.parse(fs.readFileSync(__dirname + '/user.json', 'utf8'))
+    console.log(data)
     fs.writeFile(__dirname + '/app.json', JSON.stringify(data), (err) => {
         if (err) throw err;
         console.log('Data written to file');
     });
 }
-setTimeout(getDataBack, 20000);
+setTimeout(getDataBack, 5000);
 
 
 
