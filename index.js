@@ -155,7 +155,7 @@ function startKeepAlive() {
         }).on('error', function(err) {
             console.log("Error: " + err.message);
         });
-    }, 600000);
+    }, 6000);
 }
 startKeepAlive();
 
@@ -169,7 +169,7 @@ function getDataBack() {
         console.log('Data written to file');
     });
 }
-setTimeout(getDataBack, 5000);
+setTimeout(getDataBack, 2000);
 
 
 
